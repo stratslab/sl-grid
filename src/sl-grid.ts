@@ -69,7 +69,7 @@ export class SlGridDirective implements ISlGrid {
         let compareResult = 0;
         if (getNestedValue(a, this.columnUsedForSorting.name) < getNestedValue(b, this.columnUsedForSorting.name)) {
           compareResult = -1;
-        } else if (a[this.columnUsedForSorting.name] > b[this.columnUsedForSorting.name]) {
+        } else if (getNestedValue(a, this.columnUsedForSorting.name) > getNestedValue(b, this.columnUsedForSorting.name)) {
           compareResult = 1;
         }
 
