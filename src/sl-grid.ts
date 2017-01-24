@@ -62,10 +62,12 @@ export class SlGridDirective implements ISlGrid {
   }
 
   private updateSortedRows(): void {
+    let getNestedValue = (obj: any, path: string) => (path.split(".").reduce((acc, part) => acc && acc[part], obj));
+
     if (this.columnUsedForSorting) {
       this.sortedRows = this.sourceRows.slice().sort((a, b) => {
         let compareResult = 0;
-        if (a[this.columnUsedForSorting.name] < b[this.columnUsedForSorting.name]) {
+        if (getNestedValue(a, this.columnUsedForSorting.name) < getNestedValue(b, this.columnUsedForSorting.name)) {
           compareResult = -1;
         } else if (a[this.columnUsedForSorting.name] > b[this.columnUsedForSorting.name]) {
           compareResult = 1;
