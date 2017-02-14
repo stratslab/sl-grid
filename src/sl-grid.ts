@@ -62,7 +62,10 @@ export class SlGridDirective implements ISlGrid {
   }
 
   private updateSortedRows(): void {
-    let getNestedValue = (obj: any, path: string) => (path.split(".").reduce((acc, part) => acc && acc[part], obj));
+    let getNestedValue = (obj: any, path: string) => {
+      const value = path.split(".").reduce((acc, part) => acc && acc[part], obj);
+      return value === undefined ? null : value;
+    };
 
     if (this.columnUsedForSorting) {
       this.sortedRows = this.sourceRows.slice().sort((a, b) => {
