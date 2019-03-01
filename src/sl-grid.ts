@@ -32,7 +32,7 @@ export class SlGridDirective implements ISlGrid {
     length: 0
   };
 
-  private columnUsedForSorting: SlGridSortableColumn;
+  private columnUsedForSorting: SlGridSortableColumn | null;
 
   constructor() {
     this.sortableColumns = [];
@@ -68,15 +68,16 @@ export class SlGridDirective implements ISlGrid {
     };
 
     if (this.columnUsedForSorting) {
+      const column = this.columnUsedForSorting
       this.sortedRows = this.sourceRows.slice().sort((a, b) => {
         let compareResult = 0;
-        if (getNestedValue(a, this.columnUsedForSorting.name) < getNestedValue(b, this.columnUsedForSorting.name)) {
+        if (getNestedValue(a, column.name) < getNestedValue(b, column.name)) {
           compareResult = -1;
-        } else if (getNestedValue(a, this.columnUsedForSorting.name) > getNestedValue(b, this.columnUsedForSorting.name)) {
+        } else if (getNestedValue(a, column.name) > getNestedValue(b, column.name)) {
           compareResult = 1;
         }
 
-        if (this.columnUsedForSorting.sortOrder === SortingOrder.Desc) {
+        if (column.sortOrder === SortingOrder.Desc) {
           compareResult = compareResult * -1;
         }
         return compareResult;

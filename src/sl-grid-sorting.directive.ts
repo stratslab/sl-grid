@@ -8,7 +8,7 @@ import {SortingOrder} from './sl-grid-sorting-order.enum';
 export class SlGridSortingDirective implements SlGridSortableColumn {
   @Input('slGridSorting') name: string;
 
-  public sortOrder: SortingOrder;
+  public sortOrder: SortingOrder | null;
 
   constructor(private el: ElementRef, private renderer: Renderer, private grid: SlGridDirective) {
     grid.registerSortableColumn(this);
@@ -45,5 +45,5 @@ export class SlGridSortingDirective implements SlGridSortableColumn {
 export interface SlGridSortableColumn {
   name: string;
   sortOrder: SortingOrder | null;
-  setSortOrder(newSortOrder: SortingOrder): void;
+  setSortOrder(newSortOrder: SortingOrder | null): void;
 }

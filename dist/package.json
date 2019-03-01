@@ -1,0 +1,25 @@
+{
+  "name": "sl-grid",
+  "version": "0.1.5",
+  "description": "Simple angular2 grid based on directives",
+  "main": "bundles/slgrid.umd.js",
+  "module": "index.js",
+  "typings": "index.d.js",
+  "keywords": [
+    "angular2"
+  ],
+  "author": {
+    "name": "Stanisław Wierchoła",
+    "email": "stanislaw.wierchola@stratslab.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stratslab/sl-grid"
+  },
+  "homepage": "https://github.com/stratslab/sl-grid",
+  "bugs": {
+    "url": "https://github.com/stratslab/sl-grid/issues"
+  },
+  "peerDependencies": {}
+}
